@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -762,7 +763,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="images/logo.png" alt="Logo" class="navbar-logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
                 aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -797,7 +798,7 @@
                     creative design with clean code to build responsive websites that make an impact.</p>
                 <div>
                     <a href="#contact" class="btn-hero btn-primary-hero">Contact Me</a>
-                    <a href="images/ankitcv.docx" class="btn-hero btn-outline-hero"><i class="fas fa-download"></i> Download CV</a>
+                    <a href="{% static 'images/ankitcv.docx' %}" class="btn-hero btn-outline-hero"><i class="fas fa-download"></i> Download CV</a>
                 </div>
             </div>
         </div>
@@ -809,7 +810,7 @@
             <h2 class="section-title fade-up">About Me</h2>
             <div class="row align-items-center">
                 <div class="col-lg-5 text-center mb-4 mb-lg-0 fade-up">
-                    <img src="images/me.jpg" alt="Profile" class="about-img">
+                    <img src="{% static 'images/me.jpg' %}" alt="Profile" class="about-img">
                 </div>
                 <div class="col-lg-7 fade-up">
                     <div class="about-text">
@@ -855,7 +856,7 @@
                 <!-- HTML -->
                 <div class="col-md-3 col-sm-6 mb-4 fade-up">
                     <div class="skill-box text-center">
-                        <img src="images/html.png" alt="HTML Logo" class="skill-logo">
+                        <img src="{% static 'images/html.png' %}" alt="HTML Logo" class="skill-logo">
                         <h4>HTML</h4>
                         <p>Semantic markup, accessibility, and modern HTML standards for structured web content.</p>
                     </div>
@@ -864,7 +865,7 @@
                 <!-- CSS -->
                 <div class="col-md-3 col-sm-6 mb-4 fade-up">
                     <div class="skill-box text-center">
-                        <img src="images/css.png" alt="CSS Logo" class="skill-logo">
+                        <img src="{% static 'images/css.png' %}" alt="CSS Logo" class="skill-logo">
                         <h4>CSS</h4>
                         <p>Responsive design, animations, Flexbox, Grid, and modern styling techniques.</p>
                     </div>
@@ -873,7 +874,7 @@
                 <!-- JavaScript -->
                 <div class="col-md-3 col-sm-6 mb-4 fade-up">
                     <div class="skill-box text-center">
-                        <img src="images/js.png" alt="JavaScript Logo" class="skill-logo">
+                        <img src="{% static 'images/js.png' %}" alt="JavaScript Logo" class="skill-logo">
                         <h4>JavaScript</h4>
                         <p>Interactive functionality, DOM manipulation, and creating dynamic experiences.</p>
                     </div>
@@ -882,7 +883,7 @@
                 <!-- Bootstrap -->
                 <div class="col-md-3 col-sm-6 mb-4 fade-up">
                     <div class="skill-box text-center">
-                        <img src="images/bootstrap.png" alt="Bootstrap Logo" class="skill-logo">
+                        <img src="{% static 'images/bootstrap.png' %}" alt="Bootstrap Logo" class="skill-logo">
                         <h4>Bootstrap</h4>
                         <p>Rapid development with responsive components and mobile-first design.</p>
                     </div>
@@ -899,7 +900,7 @@
                 <!-- Project 1 -->
                 <div class="col-lg-6 col-md-6 col-sm-12 fade-up mb-4">
                     <div class="project-card">
-                        <img src="images/sevenstar.png" alt="Seven Star" class="project-img">
+                        <img src="{% static 'images/sevenstar.png' %}" alt="Seven Star" class="project-img">
                         <div class="project-body">
                             <h4>Seven Star Suppliers E-Commerce</h4>
                             <p>A fully functional e-commerce platform featuring product listings, shopping cart, and
@@ -920,7 +921,7 @@
                 <!-- Project 2 -->
                 <div class="col-lg-6 col-md-6 col-sm-12 fade-up mb-4">
                     <div class="project-card">
-                        <img src="images/flipkart.png" alt="Flipkart" class="project-img">
+                        <img src="{% static 'images/flipkart.png' %}" alt="Flipkart" class="project-img">
                         <div class="project-body">
                             <h4>Flipkart Frontend Clone</h4>
                             <p>A pixel-perfect frontend recreation of Flipkart's e-commerce interface, showcasing
@@ -978,7 +979,7 @@
             <div class="row">
                 <div class="col-md-6 mb-4 fade-up">
                     <div class="achievement-box text-center p-4 border rounded shadow-sm h-100">
-                        <img src="images/azuredev.png" alt="Certificate" class="achievement-img mb-3">
+                        <img src="{% static 'images/azuredev.png' %}" alt="Certificate" class="achievement-img mb-3">
                         <h5>Certificate from Azure Dev IT Company</h5>
                         <p>Received certification from Azure Dev IT Company, Bharatpur, Chitwan for completing web
                             development training and demonstrating proficiency in modern web technologies.</p>
@@ -986,7 +987,7 @@
                 </div>
                 <div class="col-md-6 mb-4 fade-up">
                     <div class="achievement-box text-center p-4 border rounded shadow-sm h-100">
-                        <img src="images/trophy.png" alt="Trophy" class="achievement-img mb-3">
+                        <img src="{% static 'images/trophy.png' %}" alt="Trophy" class="achievement-img mb-3">
                         <h5>Frontend Development Competition</h5>
                         <p>Participate in Frontend Development Competition organized by United Tech Club, the
                             official technical club of United Technical College.</p>
@@ -1001,6 +1002,16 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title fade-up">Get In Touch</h2>
+                    {% if messages %}
+                        <div class="mb-4">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
             <div class="row">
                 <div class="col-lg-6 fade-up">
                     <div class="contact-info">
@@ -1032,10 +1043,11 @@
                 </div>
                 <div class="col-lg-6 fade-up">
                     <div class="contact-form">
-                        <form id="contactForm" onsubmit="sendWhatsApp(event)">
-                            <input type="text" id="name" placeholder="Your Name" required>
-                            <input type="email" id="email" placeholder="Your Email" required>
-                            <textarea id="message" placeholder="Your Message" required></textarea>
+                        <form id="contactForm" method="post" action="{% url 'home' %}">
+                            {% csrf_token %}
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                             <button type="submit">Send Message</button>
                         </form>
                     </div>
@@ -1043,6 +1055,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Toast container for AJAX feedback -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+        <div id="contactToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="contactToastBody"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -1130,22 +1152,58 @@
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-        function sendWhatsApp(e) {
-            e.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+        // AJAX contact form submission with toast feedback
+        (function () {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
 
-            const phone = "977-9860342611";
-            const text = `Hello! My name is ${name}.%0AEmail: ${email}%0AMessage: ${message}`;
-            const url = `https://web.whatsapp.com/${phone}?text=${encodeURIComponent(text)}`;
+            const toastEl = document.getElementById('contactToast');
+            const toastBody = document.getElementById('contactToastBody');
 
+            function showToast(message, type = 'success') {
+                // adjust toast background based on type
+                toastEl.classList.remove('text-bg-success', 'text-bg-danger');
+                toastEl.classList.add(type === 'success' ? 'text-bg-success' : 'text-bg-danger');
+                toastBody.textContent = message;
+                const bsToast = new bootstrap.Toast(toastEl);
+                bsToast.show();
+            }
 
-            window.open(url, "_blank");
-        }
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const url = form.action;
+                const formData = new FormData(form);
+                // get csrf token from form
+                const csrfInput = form.querySelector('[name=csrfmiddlewaretoken]');
+                const csrfToken = csrfInput ? csrfInput.value : '';
+
+                try {
+                    const resp = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRFToken': csrfToken
+                        },
+                        body: formData
+                    });
+
+                    const data = await resp.json().catch(() => ({}));
+                    if (resp.ok) {
+                        showToast(data.message || 'Message sent successfully', 'success');
+                        form.reset();
+                        // keep the user focused on contact section
+                        location.hash = 'contact';
+                    } else {
+                        const msg = data.message || 'There was an error sending your message.';
+                        showToast(msg, 'danger');
+                    }
+                } catch (err) {
+                    showToast('Request failed: ' + err.message, 'danger');
+                }
+            });
+        })();
 
 
     </script>
