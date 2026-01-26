@@ -45,5 +45,6 @@ def home(request):
         form = ContactForm()
 
     return render(request, "index.html", {"form": form})
-def index(request):
-    return HttpResponse("hello world")
+
+
+    
