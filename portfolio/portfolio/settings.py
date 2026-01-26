@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-ll(4sliy(hxv+f46vw1*ax4gyo5v0&0pp9zn7%5l_vj93g_$$g"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = false
 
 # Email (Gmail SMTP) - configure via environment variables for security
 # Note: For Gmail, generate an App Password and set it in EMAIL_HOST_PASSWORD
@@ -36,7 +36,7 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'sangitlamichhane333@gmail.c
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'pcpgxftvjtkmhjmq')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 DEFAULT_TO_EMAIL = os.environ.get('DEFAULT_TO_EMAIL', EMAIL_HOST_USER)
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -127,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+Static_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
    
