@@ -9,12 +9,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # =========================
 # SECURITY
 # =========================
-SECRET_KEY = config(
-    "SECRET_KEY",
-    default="django-insecure-ll(4sliy(hxv+f46vw1*ax4gyo5v0&0pp9zn7%5l_vj93g_$$g"
-)
+SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", default=False, cast=bool)
+
+# Security Settings for Production
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 ALLOWED_HOSTS = [
     ".vercel.app",
@@ -22,7 +28,13 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "lamichhaneankit.com.np",
     "www.lamichhaneankit.com.np",
-    "*",
+]
+
+# CSRF Configuration
+CSRF_TRUSTED_ORIGINS = [
+    "https://lamichhaneankit.com.np",
+    "https://www.lamichhaneankit.com.np",
+    "https://*.vercel.app",
 ]
 
 
@@ -36,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "home",  # Contact form app
 ]
 
 MIDDLEWARE = [
@@ -128,8 +141,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="sangitlamichhane333@gmail.com")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="pcpgxftvjtkmhjmq")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DEFAULT_TO_EMAIL = EMAIL_HOST_USER
