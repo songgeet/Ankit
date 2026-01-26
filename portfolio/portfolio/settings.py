@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,9 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # =========================
 # SECURITY
 # =========================
-SECRET_KEY = "django-insecure-ll(4sliy(hxv+f46vw1*ax4gyo5v0&0pp9zn7%5l_vj93g_$$g"
+SECRET_KEY = config(
+    "SECRET_KEY",
+    default="django-insecure-ll(4sliy(hxv+f46vw1*ax4gyo5v0&0pp9zn7%5l_vj93g_$$g"
+)
 
-DEBUG = False
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     ".vercel.app",
@@ -123,8 +127,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = "sangitlamichhane333@gmail.com"
-EMAIL_HOST_PASSWORD = "pcpgxftvjtkmhjmq"
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="sangitlamichhane333@gmail.com")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="pcpgxftvjtkmhjmq")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DEFAULT_TO_EMAIL = EMAIL_HOST_USER

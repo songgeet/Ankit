@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+*.pyc
+__pycache__/
+*.egg-info/
+.Python
+env/
+venv/
+.vscode/
+.idea/
+*.db
+db.sqlite3
+.DS_Store
+node_modules/
