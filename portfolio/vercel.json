@@ -1,27 +1,6 @@
 {
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python@3.1.0",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
-    },
-    {
-      "src": "staticfiles/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "env": {
-    "PYTHONUNBUFFERED": "1"
-  },
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "api/index.py"
-    }
-  ]
+  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput",
+  "devCommand": "python manage.py runserver",
+  "installCommand": "pip install -r requirements.txt"
 }
 
