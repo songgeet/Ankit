@@ -1,25 +1,26 @@
 {
-  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput --clear",
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python@3.1.0",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
+    },
+    {
+      "src": "staticfiles/**",
+      "use": "@vercel/static"
+    }
+  ],
   "env": {
     "PYTHONUNBUFFERED": "1"
-  },
-  "functions": {
-    "api/index.py": {
-      "memory": 3008,
-      "maxDuration": 30
-    }
   },
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/index.py"
+      "dest": "api/index.py"
     }
   ]
 }
