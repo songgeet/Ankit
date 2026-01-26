@@ -1,17 +1,16 @@
 {
-"builds":
-  [    
-    {"src":"portfolio/wsgi.py",
-   "use":"@vercel/python"
-
-
+  "builds": [
+    {
+      "src": "portfolio/wsgi.py",
+      "use": "@vercel/python"
     }
   ],
-"routes":[
-    {"scr": "/(.*)",
-      "dest":"portfolio/wsgi.py"     
-     }
-    ]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "portfolio/wsgi.py"
+    }
+  ]
 }
 
 
