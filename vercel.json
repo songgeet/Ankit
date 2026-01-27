@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "portfolio/api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "portfolio/api/index.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "portfolio.settings"
+  }
+}
